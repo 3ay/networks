@@ -8,17 +8,13 @@ import java.net.Socket;
 
 public class Client {
     public static void main(String[] args) {
-        try {
-            Socket socket = new Socket("netology.homework", 12345);
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
+        try (Socket socket = new Socket("netology.homework", 12345);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
+        ) {
             String serverMessage = in.readLine();
             System.out.println("Server: " + serverMessage);
-
-            BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
-
             String name = userInputReader.readLine();
             out.println(name);
 
@@ -31,7 +27,6 @@ public class Client {
             serverMessage = in.readLine();
             System.out.println("Server: " + serverMessage);
 
-            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
