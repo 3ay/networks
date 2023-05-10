@@ -9,7 +9,7 @@ import java.net.Socket;
 public class Server {
     public static void main(String[] args) throws IOException {
         int myPort = 7777;
-        Connection connection = new Connection(); // Create the Connection instance outside the while loop
+        Connection connection = new Connection();
 
         while (true) {
             Socket socket = connection.runServerByPort(myPort);
@@ -24,7 +24,6 @@ public class Server {
             String answer = reader.readLine();
             out.println("Received answer from client: " + answer);
 
-            // Determine the appropriate response based on the answer
             String response;
             if (answer.equalsIgnoreCase("yes")) {
                 response = "Welcome to the kids area, " + name + "! Let's play!";
