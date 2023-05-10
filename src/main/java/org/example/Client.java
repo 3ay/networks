@@ -11,7 +11,7 @@ public class Client {
         try (Socket socket = new Socket("netology.homework", 12345);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in));
+             BufferedReader userInputReader = new BufferedReader(new InputStreamReader(System.in))
         ) {
             String serverMessage = in.readLine();
             System.out.println("Server: " + serverMessage);

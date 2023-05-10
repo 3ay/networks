@@ -9,7 +9,7 @@ public class Server {
         try (ServerSocket serverSocket = new ServerSocket(12345);
              Socket clientSocket = serverSocket.accept();
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)
         ) {
             System.out.println("Server started. Waiting for a client...");
             System.out.println("Client connected: " + clientSocket.getInetAddress().getHostAddress());
